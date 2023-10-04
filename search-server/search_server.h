@@ -252,7 +252,7 @@ SearchServer::FindAllDocuments(const std::execution::parallel_policy &executionP
                   });
 
     auto document_to_relevance_temp = std::move(document_to_relevance.BuildOrdinaryMap());
-    std::vector<Document> to_return (document_to_relevance_temp.size());
+    std::vector<Document> to_return;
 
     for (const auto [document_id, relevance]: document_to_relevance_temp) {
         to_return.emplace_back(document_id, relevance, documents_.at(document_id).rating);
